@@ -5,9 +5,8 @@ import path from "path";
 
 const prismaClientSingleton = () => {
   if (process.env.VERCEL === "1") {
-    const dbName = "dev.db";
-    const dbPath = path.join("/tmp", dbName);
-    const srcPath = path.join(process.cwd(), "prisma", dbName);
+    const dbPath = path.join("/tmp", "dev.db");
+    const srcPath = path.join(process.cwd(), "prisma/dev.db");
     
     process.env.DATABASE_URL = `file:${dbPath}`;
     
