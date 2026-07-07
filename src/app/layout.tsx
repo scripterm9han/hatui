@@ -32,30 +32,23 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-bg-dark text-slate-100 selection:bg-neon-cyan/30 selection:text-white">
+      <body className="min-h-full flex flex-col bg-ambient text-[var(--foreground)]">
         <SessionProvider>
-          {/* Animated Background Mesh Blobs */}
-          <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            {/* Deep Indigo Glow */}
-            <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-indigo-600/3 blur-[120px] animate-float-slow" />
-            
-            {/* Soft Violet Glow */}
-            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-violet-600/3 blur-[150px] animate-float-medium" />
-          </div>
-
+          {/* Subtle grid wash */}
+          <div className="fixed inset-0 grid-bg pointer-events-none z-0" />
           {/* Global cursor-follow atmospheric glow & shortcut palette */}
           <GlowEffect />
           <CommandPalette />
           <div className="fixed inset-0 radial-glow pointer-events-none z-0" />
-          
+
           {/* Unified header navigation */}
           <Navbar />
-          
+
           {/* Main page content area */}
           <main className="flex-1 flex flex-col z-10 relative">
             {children}
           </main>
-          
+
           {/* Common footer */}
           <Footer />
         </SessionProvider>
