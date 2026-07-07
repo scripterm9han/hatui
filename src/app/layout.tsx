@@ -36,17 +36,11 @@ export default function RootLayout({
         <SessionProvider>
           {/* Animated Background Mesh Blobs */}
           <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-            {/* Cyan Blob (Maps to Mint #05ffa3) */}
-            <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-neon-cyan/6 blur-[120px] animate-float-slow" />
+            {/* Deep Indigo Glow */}
+            <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-indigo-600/3 blur-[120px] animate-float-slow" />
             
-            {/* Violet Blob (Maps to Gold #ffcd00) */}
-            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-neon-violet/6 blur-[150px] animate-float-medium" />
-            
-            {/* Emerald Blob */}
-            <div className="absolute top-[30%] right-[10%] w-[40vw] h-[40vw] rounded-full bg-emerald-500/4 blur-[120px] animate-float-fast" />
-            
-            {/* Amber Blob */}
-            <div className="absolute bottom-[30%] left-[10%] w-[45vw] h-[45vw] rounded-full bg-amber-500/4 blur-[130px] animate-float-slow" />
+            {/* Soft Violet Glow */}
+            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-violet-600/3 blur-[150px] animate-float-medium" />
           </div>
 
           {/* Global cursor-follow atmospheric glow & shortcut palette */}

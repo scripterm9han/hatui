@@ -176,18 +176,18 @@ export default function PricingPage() {
             <button
               onClick={handleUpgrade}
               disabled={loading || (session?.user as any)?.plan === "pro"}
-              className="w-full flex items-center justify-center gap-2 h-11 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[inset_1px_1px_0px_rgba(255,255,255,0.45),0_0_20px_rgba(0,240,255,0.25)] disabled:opacity-50 hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
+              className="w-full flex items-center justify-center gap-2 h-11 rounded-xl bg-white text-zinc-950 hover:bg-zinc-200 font-semibold transition-all text-xs font-sans shadow-[0_4px_16px_rgba(255,255,255,0.08)] disabled:opacity-50 hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
             >
               {loading ? (
                 <>
-                  <Loader className="h-4 w-4 animate-spin" />
+                  <Loader className="h-4 w-4 animate-spin text-zinc-950" />
                   Connecting...
                 </>
               ) : (session?.user as any)?.plan === "pro" ? (
                 "You are already Pro!"
               ) : (
                 <>
-                  <Zap className="h-4 w-4 fill-black" />
+                  <Zap className="h-4 w-4 fill-zinc-950 text-zinc-950" />
                   Upgrade to Pro
                 </>
               )}

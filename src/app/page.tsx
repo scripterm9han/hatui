@@ -35,12 +35,12 @@ export default async function HomePage() {
         
         {/* Cinematic Hero Title Section */}
         <div className="text-center space-y-6 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan text-xs font-mono tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-xs font-mono tracking-wider uppercase">
             <Terminal className="h-3.5 w-3.5" />
             Phase 1 MVP Active
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white font-sans leading-tight">
-            The Multi-Tool Arsenal for <span className="text-neon-cyan font-mono drop-shadow-[0_0_15px_rgba(0,240,255,0.3)]">Engineers</span>
+            The Multi-Tool Arsenal for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-indigo-500">Engineers</span>
           </h1>
           <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-sans">
             Stop opening 50 different browser tabs. Hatiyar houses your essential converters, regex parsers, QR engines, and flagship AI ATS resume scoring and roasting under one unified, cinematic interface.
@@ -48,7 +48,7 @@ export default async function HomePage() {
           <div className="flex justify-center gap-4 pt-2">
             <Link
               href="/tools"
-              className="flex items-center gap-2 h-11 px-6 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[inset_1px_1px_0px_rgba(255,255,255,0.45),0_0_20px_rgba(0,240,255,0.25)] hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
+              className="flex items-center gap-2 h-11 px-6 rounded-xl bg-white text-zinc-950 hover:bg-zinc-200 font-semibold transition-all text-xs font-sans shadow-[0_4px_20px_rgba(255,255,255,0.1)] hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
             >
               Enter the Arsenal
               <ArrowRight className="h-4 w-4" />
