@@ -26,7 +26,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-16 bg-bg-dark/80 backdrop-blur-md border-b border-border-card z-50 px-4 md:px-8 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 w-full h-16 bg-bg-dark/45 backdrop-blur-xl border-b border-white/10 z-50 px-4 md:px-8 flex items-center justify-between shadow-[0_4px_30px_rgba(0,0,0,0.4)]">
       {/* Brand Logo */}
       <div className="flex items-center gap-6">
         <Link href="/" className="flex items-center gap-2 group">
@@ -69,7 +69,7 @@ export default function Navbar() {
 
         {/* Fuzzy Search Dropdown */}
         {filteredTools.length > 0 && (
-          <div className="absolute top-11 left-0 w-full rounded-xl border border-border-card bg-bg-card shadow-2xl p-2 space-y-1 z-50">
+          <div className="absolute top-11 left-0 w-full rounded-xl border border-white/10 bg-bg-dark/85 backdrop-blur-xl p-2 space-y-1 z-50 shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
             <div className="text-[10px] font-mono text-slate-500 uppercase px-2 py-1">
               Found {filteredTools.length} tools
             </div>
@@ -114,7 +114,7 @@ export default function Navbar() {
         ) : (
           <Link
             href="/auth/signin"
-            className="flex items-center gap-1.5 px-4 h-9 rounded-lg bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan hover:bg-neon-cyan/20 transition-all text-xs font-mono"
+            className="flex items-center gap-1.5 px-4 h-9 rounded-lg btn-glass-cyan text-xs font-mono"
           >
             <LogIn className="h-3.5 w-3.5" />
             Sign In
@@ -132,7 +132,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-bg-card border-b border-border-card p-6 space-y-4 z-50 flex flex-col font-mono text-xs uppercase tracking-wider md:hidden">
+        <div className="absolute top-16 left-0 w-full bg-bg-dark/85 backdrop-blur-xl border-b border-white/10 p-6 space-y-4 z-50 flex flex-col font-mono text-xs uppercase tracking-wider md:hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
           <Link
             href="/tools"
             onClick={() => setMobileMenuOpen(false)}
@@ -181,7 +181,7 @@ export default function Navbar() {
               <Link
                 href="/auth/signin"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-1.5 h-10 rounded-lg bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan hover:bg-neon-cyan/20 transition-all text-xs font-mono"
+                className="w-full flex items-center justify-center gap-1.5 h-10 rounded-lg btn-glass-cyan text-xs font-mono"
               >
                 <LogIn className="h-3.5 w-3.5" />
                 Sign In

@@ -48,14 +48,14 @@ export default async function HomePage() {
           <div className="flex justify-center gap-4 pt-2">
             <Link
               href="/tools"
-              className="flex items-center gap-2 h-11 px-6 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[0_0_20px_rgba(0,240,255,0.25)]"
+              className="flex items-center gap-2 h-11 px-6 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[inset_1px_1px_0px_rgba(255,255,255,0.45),0_0_20px_rgba(0,240,255,0.25)] hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
             >
               Enter the Arsenal
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/pricing"
-              className="flex items-center gap-2 h-11 px-6 rounded-xl border border-slate-800 hover:border-neon-cyan/30 bg-slate-900/60 hover:bg-slate-900 text-slate-300 hover:text-white transition-all text-xs font-mono"
+              className="flex items-center gap-2 h-11 px-6 rounded-xl btn-glass-slate hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
             >
               View Pro Pricing
             </Link>
@@ -70,7 +70,7 @@ export default async function HomePage() {
             { value: "< 50ms", label: "Client Latency" },
             { value: "99.99%", label: "API Uptime" },
           ].map((stat, i) => (
-            <div key={i} className="glass-card rounded-xl border border-border-card/50 p-5 text-center">
+            <div key={i} className="glass-card rounded-xl border border-white/5 p-5 text-center shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
               <span className="block text-2xl md:text-3xl font-extrabold text-white font-mono">{stat.value}</span>
               <span className="block text-[10px] font-mono uppercase tracking-wider text-slate-500 mt-1">{stat.label}</span>
             </div>
@@ -97,17 +97,17 @@ export default async function HomePage() {
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="glass-card rounded-2xl border border-border-card p-6 flex flex-col justify-between group relative overflow-hidden h-[240px]"
+                  className="glass-card rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden h-[240px]"
                 >
                   {/* Subtle hover glow accent */}
                   <div className="absolute top-0 right-0 w-24 h-24 bg-neon-cyan/5 blur-2xl rounded-full group-hover:bg-neon-cyan/15 transition-all duration-300" />
                   
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="h-10 w-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-neon-cyan group-hover:border-neon-cyan/30 transition-all shadow-inner">
+                      <div className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-neon-cyan group-hover:border-neon-cyan/40 transition-all shadow-[inset_1px_1px_0px_rgba(255,255,255,0.05)]">
                         <IconComp className="h-5 w-5" />
                       </div>
-                      <span className="text-[10px] font-mono text-slate-500 bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-md">
+                      <span className="text-[10px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-md shadow-[inset_1px_1px_0px_rgba(255,255,255,0.02)]">
                         {tool.monthlyUses} monthly uses
                       </span>
                     </div>
@@ -121,7 +121,7 @@ export default async function HomePage() {
                           </span>
                         )}
                       </h3>
-                      <p className="text-slate-400 text-xs leading-relaxed line-clamp-3">
+                      <p className="text-slate-400 text-xs leading-relaxed line-clamp-3 font-sans">
                         {tool.description}
                       </p>
                     </div>

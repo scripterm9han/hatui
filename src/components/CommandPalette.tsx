@@ -96,10 +96,10 @@ export default function CommandPalette() {
     >
       <div
         ref={modalRef}
-        className="w-full max-w-lg rounded-2xl bg-bg-card/95 border border-neon-cyan/40 shadow-[0_0_30px_rgba(0,240,255,0.15)] overflow-hidden flex flex-col"
+        className="w-full max-w-lg rounded-2xl bg-bg-dark/65 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col"
       >
         {/* Search Input block */}
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/5 relative">
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10 relative">
           <Search className="h-4.5 w-4.5 text-slate-400 shrink-0" />
           <input
             ref={inputRef}

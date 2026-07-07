@@ -105,10 +105,10 @@ export default function DashboardClient({
   return (
     <div className="space-y-8">
       {/* Top Banner with plan metadata */}
-      <div className="glass-card rounded-2xl border border-border-card p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
+      <div className="glass-card rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-neon-cyan/5 blur-3xl rounded-full pointer-events-none" />
         
-        <div className="space-y-1.5 z-10">
+        <div className="space-y-1.5 z-10 font-sans">
           <div className="flex items-center gap-2">
             <h2 className="text-xl font-bold text-white">Welcome, {userName || userEmail}</h2>
             {userPlan === "pro" ? (
@@ -117,7 +117,7 @@ export default function DashboardClient({
                 PRO MEMBER
               </span>
             ) : (
-              <span className="px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-400 text-[10px] font-mono">
+              <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-400 text-[10px] font-mono shadow-[inset_1px_1px_0px_rgba(255,255,255,0.02)]">
                 FREE USER
               </span>
             )}
@@ -128,7 +128,7 @@ export default function DashboardClient({
         {userPlan !== "pro" && (
           <button
             onClick={() => router.push("/pricing")}
-            className="flex items-center gap-2 h-11 px-5 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[0_0_15px_rgba(0,240,255,0.25)] z-10"
+            className="flex items-center gap-2 h-11 px-5 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[inset_1px_1px_0px_rgba(255,255,255,0.45),0_0_15px_rgba(0,240,255,0.25)] z-10 hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
           >
             <Zap className="h-4.5 w-4.5 fill-black" />
             Upgrade to Pro • ₹299/mo
@@ -139,16 +139,16 @@ export default function DashboardClient({
       {/* Stats Meters grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* ATS Checker Meter */}
-        <div className="glass-card rounded-xl border border-border-card p-6 space-y-4">
+        <div className="glass-card rounded-xl p-6 space-y-4">
           <div className="flex justify-between items-center">
             <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400">ATS Checker Usage</h4>
             <span className="text-xs font-mono font-bold text-white">
               {checkerUsageToday} / {userPlan === "pro" ? "∞" : "10"} today
             </span>
           </div>
-          <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+          <div className="h-2.5 w-full bg-black/60 rounded-full overflow-hidden border border-white/5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
             <div
-              className="h-full bg-neon-cyan rounded-full transition-all duration-500"
+              className="h-full bg-neon-cyan rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(0,240,255,0.4)]"
               style={{ width: `${Math.min((checkerUsageToday / 10) * 100, 100)}%` }}
             />
           </div>
@@ -158,16 +158,16 @@ export default function DashboardClient({
         </div>
 
         {/* Resume Roaster Meter */}
-        <div className="glass-card rounded-xl border border-border-card p-6 space-y-4">
+        <div className="glass-card rounded-xl p-6 space-y-4">
           <div className="flex justify-between items-center">
             <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400">AI Roaster Usage</h4>
             <span className="text-xs font-mono font-bold text-white">
               {roasterUsageToday} / {userPlan === "pro" ? "∞" : "5"} today
             </span>
           </div>
-          <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+          <div className="h-2.5 w-full bg-black/60 rounded-full overflow-hidden border border-white/5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
             <div
-              className="h-full bg-neon-violet rounded-full transition-all duration-500"
+              className="h-full bg-neon-violet rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(139,92,246,0.4)]"
               style={{ width: `${Math.min((roasterUsageToday / 5) * 100, 100)}%` }}
             />
           </div>
@@ -177,7 +177,7 @@ export default function DashboardClient({
         </div>
 
         {/* Most-Used Tool Ranking */}
-        <div className="glass-card rounded-xl border border-border-card p-6 space-y-4">
+        <div className="glass-card rounded-xl p-6 space-y-4">
           <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
             <BarChart2 className="h-4 w-4 text-neon-cyan" />
             Top Used Arsenal
@@ -200,19 +200,19 @@ export default function DashboardClient({
       </div>
 
       {/* Saved History Lists */}
-      <div className="glass-card rounded-xl border border-border-card p-6">
+      <div className="glass-card rounded-xl p-6">
         <h3 className="text-lg font-semibold text-white font-sans mb-4 flex items-center gap-2">
           <FileText className="h-5 w-5 text-neon-cyan" />
           Saved Output History
           {userPlan !== "pro" && (
-            <span className="text-[10px] font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded-md">
+            <span className="text-[10px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-md shadow-[inset_1px_1px_0px_rgba(255,255,255,0.02)]">
               Free rolling limit: {history.length} / 20 saved per tool
             </span>
           )}
         </h3>
 
         {history.length > 0 ? (
-          <div className="divide-y divide-slate-800/80">
+          <div className="divide-y divide-white/5">
             {history.map((item) => (
               <div key={item.id} className="py-4">
                 <div className="flex items-center justify-between gap-4">
@@ -242,7 +242,7 @@ export default function DashboardClient({
                   <button
                     onClick={() => handleDelete(item.id)}
                     disabled={deletingId === item.id}
-                    className="p-2 rounded-lg border border-slate-850 hover:border-red-500/30 hover:bg-red-500/10 text-slate-500 hover:text-red-400 transition-all shrink-0"
+                    className="p-2 rounded-lg border border-slate-800 hover:border-red-500/30 hover:bg-red-500/10 text-slate-500 hover:text-red-400 transition-all shrink-0 shadow-[inset_1px_1px_0px_rgba(255,255,255,0.02)]"
                     title="Delete Saved Output"
                   >
                     <Trash2 className="h-4 w-4" />
@@ -250,17 +250,17 @@ export default function DashboardClient({
                 </div>
 
                 {expandedId === item.id && (
-                  <div className="mt-4 p-4 rounded-xl border border-slate-850 bg-bg-darker/60 space-y-4 animate-fadeIn font-mono text-xs text-slate-300">
+                  <div className="mt-4 p-4 rounded-xl border border-white/5 bg-black/45 space-y-4 animate-fadeIn font-mono text-xs text-slate-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <span className="block text-slate-500 uppercase tracking-wider text-[10px] mb-1">Saved Input</span>
-                        <pre className="p-3 rounded bg-black/60 overflow-x-auto whitespace-pre-wrap max-h-40 border border-white/5">
+                        <pre className="p-3 rounded bg-black/50 overflow-x-auto whitespace-pre-wrap max-h-45 border border-white/5 shadow-[inset_0_1px_3px_rgba(0,0,0,0.4)]">
                           {item.inputRef ? JSON.stringify(JSON.parse(item.inputRef), null, 2) : "None"}
                         </pre>
                       </div>
                       <div>
                         <span className="block text-slate-500 uppercase tracking-wider text-[10px] mb-1">Saved Output</span>
-                        <pre className="p-3 rounded bg-black/60 overflow-x-auto whitespace-pre-wrap max-h-40 border border-white/5 text-neon-cyan">
+                        <pre className="p-3 rounded bg-black/50 overflow-x-auto whitespace-pre-wrap max-h-45 border border-white/5 text-neon-cyan shadow-[inset_0_1px_3px_rgba(0,0,0,0.4)]">
                           {item.outputRef && item.toolSlug !== "resume-roaster"
                             ? JSON.stringify(JSON.parse(item.outputRef), null, 2)
                             : getOutputPreview(item.outputRef)}

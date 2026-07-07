@@ -94,7 +94,7 @@ export default function PricingPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-3xl mx-auto">
           
           {/* Free Tier */}
-          <div className="glass-card rounded-2xl border border-border-card p-8 flex flex-col justify-between space-y-8 relative">
+          <div className="glass-card rounded-2xl p-8 flex flex-col justify-between space-y-8 relative">
             <div className="space-y-4">
               <div>
                 <span className="text-xs font-mono text-slate-500 uppercase tracking-wider block">Starter Pack</span>
@@ -104,7 +104,7 @@ export default function PricingPage() {
                 <span className="text-4xl font-extrabold font-mono">₹0</span>
                 <span className="text-slate-500 text-xs ml-1 font-mono">/ lifetime</span>
               </div>
-              <p className="text-slate-400 text-xs leading-relaxed">
+              <p className="text-slate-400 text-xs leading-relaxed font-sans">
                 Perfect for quick, ad-hoc developer formatting, regex testing, or basic ATS analysis.
               </p>
             </div>
@@ -126,14 +126,14 @@ export default function PricingPage() {
 
             <button
               onClick={() => router.push("/tools")}
-              className="w-full h-11 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900/60 hover:bg-slate-900 text-slate-300 hover:text-white transition-all text-xs font-mono"
+              className="w-full h-11 rounded-xl btn-glass-slate text-xs font-mono font-bold"
             >
               Start Free Tools
             </button>
           </div>
 
           {/* Pro Tier */}
-          <div className="glass-card rounded-2xl border-2 border-neon-cyan p-8 flex flex-col justify-between space-y-8 relative shadow-[0_0_30px_rgba(0,240,255,0.08)] bg-bg-card/90">
+          <div className="glass-card-premium rounded-2xl p-8 flex flex-col justify-between space-y-8 relative shadow-[0_0_30px_rgba(0,240,255,0.12)] md:scale-105">
             {/* Best value tag */}
             <div className="absolute top-0 right-8 -translate-y-1/2 px-3 py-1 rounded-full bg-neon-cyan text-black text-[9px] font-mono font-bold uppercase tracking-wider shadow-[0_0_10px_rgba(0,240,255,0.4)]">
               Most Popular
@@ -152,7 +152,7 @@ export default function PricingPage() {
                   / {billingCycle === "monthly" ? "month" : "year"}
                 </span>
               </div>
-              <p className="text-slate-400 text-xs leading-relaxed">
+              <p className="text-slate-400 text-xs leading-relaxed font-sans">
                 Designed for power-users, active job-seekers, and engineers looking to maximize speed.
               </p>
             </div>
@@ -176,7 +176,7 @@ export default function PricingPage() {
             <button
               onClick={handleUpgrade}
               disabled={loading || (session?.user as any)?.plan === "pro"}
-              className="w-full flex items-center justify-center gap-2 h-11 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[0_0_20px_rgba(0,240,255,0.3)] disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 h-11 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[inset_1px_1px_0px_rgba(255,255,255,0.45),0_0_20px_rgba(0,240,255,0.25)] disabled:opacity-50 hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
             >
               {loading ? (
                 <>

@@ -34,6 +34,21 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-bg-dark text-slate-100 selection:bg-neon-cyan/30 selection:text-white">
         <SessionProvider>
+          {/* Animated Background Mesh Blobs */}
+          <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+            {/* Cyan Blob */}
+            <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-neon-cyan/6 blur-[120px] animate-float-slow" />
+            
+            {/* Violet Blob */}
+            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-neon-violet/6 blur-[150px] animate-float-medium" />
+            
+            {/* Indigo Blob */}
+            <div className="absolute top-[30%] right-[10%] w-[40vw] h-[40vw] rounded-full bg-indigo-500/4 blur-[120px] animate-float-fast" />
+            
+            {/* Rose Blob */}
+            <div className="absolute bottom-[30%] left-[10%] w-[45vw] h-[45vw] rounded-full bg-rose-500/4 blur-[130px] animate-float-slow" />
+          </div>
+
           {/* Global cursor-follow atmospheric glow & shortcut palette */}
           <GlowEffect />
           <CommandPalette />
