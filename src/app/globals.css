@@ -342,3 +342,66 @@ body {
   background: var(--color-accent-soft);
   color: white;
 }
+
+/* ---------- Legacy token aliases (kept for tool components) ---------- */
+:root {
+  --neon-cyan: var(--color-accent);
+  --neon-violet: var(--color-violet);
+  --bg-bg-dark: var(--color-bg);
+  --bg-bg-darker: var(--color-bg-elevated);
+  --bg-bg-card: var(--color-bg-surface);
+  --bg-bg-card-hover: var(--color-bg-subtle);
+  --border-card: var(--color-border);
+  --border-border-card: var(--color-border);
+}
+
+/* Map legacy tailwind color utilities to new palette */
+.text-neon-cyan { color: var(--color-accent) !important; }
+.text-neon-violet { color: var(--color-violet) !important; }
+.border-neon-cyan { border-color: var(--color-accent) !important; }
+.border-neon-cyan\/30 { border-color: rgba(91,140,255,0.3) !important; }
+.border-neon-cyan\/40 { border-color: rgba(91,140,255,0.4) !important; }
+.border-neon-violet\/20 { border-color: rgba(139,124,255,0.2) !important; }
+.border-neon-violet\/30 { border-color: rgba(139,124,255,0.3) !important; }
+.bg-neon-cyan\/5 { background-color: rgba(91,140,255,0.05) !important; }
+.bg-neon-cyan\/10 { background-color: rgba(91,140,255,0.1) !important; }
+.bg-neon-cyan\/15 { background-color: rgba(91,140,255,0.15) !important; }
+.bg-neon-cyan\/20 { background-color: rgba(91,140,255,0.2) !important; }
+.bg-neon-violet\/5 { background-color: rgba(139,124,255,0.05) !important; }
+.bg-neon-violet\/10 { background-color: rgba(139,124,255,0.1) !important; }
+.bg-neon-violet\/20 { background-color: rgba(139,124,255,0.2) !important; }
+.from-neon-cyan { --tw-gradient-from: var(--color-accent) var(--tw-gradient-from-position); }
+.to-neon-violet { --tw-gradient-to: var(--color-violet) var(--tw-gradient-to-position); }
+.via-neon-cyan { --tw-gradient-via: var(--color-accent) var(--tw-gradient-via-position); }
+.accent-neon-cyan { accent-color: var(--color-accent) !important; }
+
+/* Legacy glass-card kept with refined surface styling */
+.glass-card {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.glass-card:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-3px);
+}
+.glass-card-premium {
+  background-color: var(--color-bg-surface);
+  border: 1px solid rgba(91, 140, 255, 0.28);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 0 1px rgba(91, 140, 255, 0.06) inset, 0 24px 60px -20px rgba(59, 110, 246, 0.35);
+}
+.btn-glass-cyan {
+  background: var(--color-accent-soft);
+  border: 1px solid rgba(91, 140, 255, 0.3);
+  color: var(--color-accent);
+}
+.btn-glass-cyan:hover { background: rgba(91, 140, 255, 0.2); color: white; }
+.btn-glass-slate {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  color: var(--color-fg-muted);
+}
+.btn-glass-slate:hover { background: rgba(255, 255, 255, 0.06); color: white; }
