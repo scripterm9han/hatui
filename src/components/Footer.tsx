@@ -3,33 +3,33 @@ import { Shield } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-bg-darker border-t border-border-card py-12 px-4 md:px-8 mt-auto z-10 relative">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <footer className="w-full border-t border-[var(--color-border)] py-12 mt-auto z-10 relative bg-[var(--color-bg)]/40">
+      <div className="shell flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         {/* Brand Information */}
         <div className="space-y-3 max-w-sm">
           <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-lg bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center shadow-[0_0_10px_rgba(0,240,255,0.2)]">
-              <Shield className="h-4 w-4 text-neon-cyan" />
+            <div className="h-7 w-7 rounded-lg btn-accent-soft flex items-center justify-center">
+              <Shield className="h-4 w-4 text-[var(--color-accent)]" />
             </div>
-            <span className="text-white font-bold font-mono tracking-wider text-sm">HATIYAR.IN</span>
+            <span className="text-white font-bold font-mono tracking-wider text-sm">HATIYAR</span>
           </div>
-          <p className="text-xs text-slate-500 leading-relaxed font-sans">
-            A production-grade, fast, multi-tool engineer's arsenal. Formatter, converters, AI resume engines, and utility modules built for speed and visual excellence.
+          <p className="text-sm text-[var(--color-fg-subtle)] leading-relaxed">
+            A production-grade, fast, multi-tool engineer's arsenal. Formatters, converters, AI resume engines, and utility modules built for speed.
           </p>
         </div>
 
         {/* Footer Links */}
-        <div className="flex flex-wrap gap-x-12 gap-y-6 text-xs font-mono uppercase tracking-wider text-slate-400">
+        <div className="flex flex-wrap gap-x-12 gap-y-6 text-sm text-[var(--color-fg-muted)]">
           <div className="space-y-3">
             <span className="block text-white font-semibold">Workspace</span>
             <ul className="space-y-2">
               <li>
-                <Link href="/tools" className="hover:text-neon-cyan transition-colors">
+                <Link href="/tools" className="hover:text-[var(--color-accent)] transition-colors">
                   Tools Directory
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="hover:text-neon-cyan transition-colors">
+                <Link href="/pricing" className="hover:text-[var(--color-accent)] transition-colors">
                   Pricing Plans
                 </Link>
               </li>
@@ -39,12 +39,12 @@ export default function Footer() {
             <span className="block text-white font-semibold">Legal</span>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-neon-cyan transition-colors">
+                <a href="#" className="hover:text-[var(--color-accent)] transition-colors">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-neon-cyan transition-colors">
+                <a href="#" className="hover:text-[var(--color-accent)] transition-colors">
                   Terms of Service
                 </a>
               </li>
@@ -53,10 +53,11 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto border-t border-slate-800/80 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono text-slate-600">
+      <div className="shell border-t border-[var(--color-border)] mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-fg-subtle)]">
         <p>© {new Date().getFullYear()} Hatiyar. All rights reserved.</p>
-        <p className="flex items-center gap-1">
-          Designed for developers with <span className="text-neon-cyan animate-pulse">⚡</span>
+        <p className="flex items-center gap-1.5">
+          Built for developers
+          <span className="text-[var(--color-accent)]">✦</span>
         </p>
       </div>
     </footer>
