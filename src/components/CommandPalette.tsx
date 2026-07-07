@@ -92,30 +92,30 @@ export default function CommandPalette() {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[100] flex items-start justify-center pt-24 px-4 transition-all duration-300"
+      className="fixed inset-0 bg-black/70 backdrop-blur-md z-[100] flex items-start justify-center pt-24 px-4"
     >
       <div
         ref={modalRef}
-        className="w-full max-w-lg rounded-2xl bg-bg-dark/65 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col"
+        className="w-full max-w-lg rounded-2xl bg-[var(--color-bg-surface)]/95 backdrop-blur-xl border border-[var(--color-border-strong)] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col"
       >
         {/* Search Input block */}
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10 relative">
-          <Search className="h-4.5 w-4.5 text-slate-400 shrink-0" />
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-[var(--color-border)] relative">
+          <Search className="h-4.5 w-4.5 text-[var(--color-fg-subtle)] shrink-0" />
           <input
             ref={inputRef}
             type="text"
             placeholder="Search tools, actions, category..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="flex-1 bg-transparent border-0 outline-none text-white text-xs font-mono placeholder-slate-500"
+            className="flex-1 bg-transparent border-0 outline-none text-white text-sm font-mono placeholder-[var(--color-fg-subtle)]"
           />
-          <span className="text-[10px] font-mono text-slate-500 bg-slate-900 border border-slate-800 px-1.5 py-0.5 rounded select-none shrink-0">
+          <span className="text-[10px] font-mono text-[var(--color-fg-subtle)] bg-[var(--color-bg-elevated)] border border-[var(--color-border)] px-1.5 py-0.5 rounded select-none shrink-0">
             ESC
           </span>
         </div>
 
         {/* Results List */}
-        <div className="max-h-72 overflow-y-auto p-2 space-y-1">
+        <div className="max-h-80 overflow-y-auto p-2 space-y-1">
           {filtered.length > 0 ? (
             filtered.map((tool, idx) => (
               <div
@@ -127,21 +127,21 @@ export default function CommandPalette() {
                 onMouseEnter={() => setSelectedIndex(idx)}
                 className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all ${
                   selectedIndex === idx
-                    ? "bg-neon-cyan/10 border-l-2 border-neon-cyan text-neon-cyan pl-4"
-                    : "bg-transparent text-slate-300 pl-3"
+                    ? "bg-[var(--color-accent-soft)] border-l-2 border-[var(--color-accent)] text-[var(--color-accent)] pl-4"
+                    : "bg-transparent text-[var(--color-fg-muted)] pl-3"
                 }`}
               >
                 <div className="min-w-0">
-                  <span className="block text-xs font-semibold text-white truncate group-hover:text-neon-cyan">
+                  <span className="block text-sm font-semibold text-white truncate">
                     {tool.name}
                   </span>
-                  <span className="block text-[10px] text-slate-500 truncate max-w-sm">
+                  <span className="block text-[11px] text-[var(--color-fg-subtle)] truncate max-w-sm">
                     {tool.description}
                   </span>
                 </div>
-                
+
                 {selectedIndex === idx && (
-                  <span className="text-[9px] font-mono text-neon-cyan flex items-center gap-0.5 shrink-0 select-none">
+                  <span className="text-[9px] font-mono text-[var(--color-accent)] flex items-center gap-0.5 shrink-0 select-none">
                     Navigate
                     <CornerDownLeft className="h-3 w-3" />
                   </span>
@@ -149,16 +149,16 @@ export default function CommandPalette() {
               </div>
             ))
           ) : (
-            <div className="text-center py-8 text-slate-500 text-xs font-mono">
+            <div className="text-center py-8 text-[var(--color-fg-subtle)] text-xs font-mono">
               No matching tools found.
             </div>
           )}
         </div>
 
         {/* Command Palette Keyboard Controls Guide Footer */}
-        <div className="bg-bg-darker px-4 py-2.5 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-slate-500">
+        <div className="bg-[var(--color-bg-elevated)] px-4 py-2.5 border-t border-[var(--color-border)] flex items-center justify-between text-[10px] font-mono text-[var(--color-fg-subtle)]">
           <div className="flex items-center gap-1.5">
-            <Terminal className="h-3 w-3 text-neon-cyan" />
+            <Terminal className="h-3 w-3 text-[var(--color-accent)]" />
             <span>Hatiyar command launcher</span>
           </div>
           <div className="flex gap-3">
