@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     const userName = session.user.name || "Customer";
 
     const amount = planType === "monthly" ? 299 : 2499;
-    const orderId = `sub_${userId.substring(5, 15)}_${Date.now()}`;
+    const orderId = `sub_${userId}_${Date.now()}`;
 
     // Cashfree Sandbox or Production Keys
     const appId = process.env.CASHFREE_APP_ID || "TEST_APP_ID";

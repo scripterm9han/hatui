@@ -17,19 +17,17 @@ export async function POST(req: NextRequest) {
       return Response.json({ status: "ignored", message: "Not a paid order event." });
     }
 
-    // Decode User ID from orderId (Format: sub_userIdExcerpt_timestamp)
+    // Decode User ID from orderId (Format: sub_userId_timestamp)
     const parts = orderId.split("_");
-    const userExcerpt = parts[1];
+    const userId = parts[1];
 
-    if (!userExcerpt) {
+    if (!userId) {
       return Response.json({ error: "Invalid order ID format." }, { status: 400 });
     }
 
-    const user = await prisma.user.findFirst({
+    const user = await prisma.user.findUnique({
       where: {
-        id: {
-          contains: userExcerpt,
-        },
+        id: userId,
       },
     });
 

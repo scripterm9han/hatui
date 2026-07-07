@@ -20,17 +20,12 @@ export async function GET(req: NextRequest) {
     // Format is sub_userIdExcerpt_timestamp. Wait, it's safer to query user ID from DB or decode it.
     // Let's decode userId from orderId which is "sub_userId_timestamp"
     const parts = orderId.split("_");
-    // Wait, in route.ts we did: `sub_${userId.substring(5, 15)}_${Date.now()}`. 
-    // To identify the user reliably, we should fetch the user whose id contains the middle part or has matching details.
-    // Better yet, we can do a lookup in SavedOutput or User. But since this is a callback, 
-    // let's do a findFirst user whose id contains the middle part of orderId!
-    const userExcerpt = parts[1];
+    // The structure is "sub_{userId}_{timestamp}" where {userId} is the full CUID.
+    const userId = parts[1];
     
-    let user = await prisma.user.findFirst({
+    let user = await prisma.user.findUnique({
       where: {
-        id: {
-          contains: userExcerpt,
-        },
+        id: userId,
       },
     });
 

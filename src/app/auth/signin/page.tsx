@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Shield, Sparkles, Mail, Terminal, ArrowRight } from "lucide-react";
+import { Shield, Mail, ArrowRight } from "lucide-react";
 
 export default function SignInPage() {
   const searchParams = useSearchParams();
@@ -14,9 +14,6 @@ export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState<string | null>(null);
   const [sentMessage, setSentMessage] = useState(false);
-  const [devEmail, setDevEmail] = useState("developer@hatiyar.in");
-  const [devName, setDevName] = useState("Lead Developer");
-  const [devPlan, setDevPlan] = useState("free");
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,28 +38,6 @@ export default function SignInPage() {
     signIn("google", { callbackUrl });
   };
 
-  const handleDevSignIn = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading("dev");
-    try {
-      const res = await signIn("credentials", {
-        email: devEmail,
-        name: devName,
-        plan: devPlan,
-        redirect: false,
-      });
-      if (res?.error) {
-        alert("Developer login failed: " + res.error);
-      } else {
-        router.push(callbackUrl);
-        router.refresh();
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(null);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-bg-dark grid-bg flex flex-col items-center justify-center p-4 relative">
@@ -148,62 +123,6 @@ export default function SignInPage() {
                 <ArrowRight className="h-4 w-4" />
               </button>
             </form>
-
-            {/* Collapsible Developer Console */}
-            <div className="border-t border-slate-800/80 pt-6">
-              <details className="group">
-                <summary className="list-none flex items-center justify-between cursor-pointer text-xs font-mono text-slate-500 hover:text-neon-cyan transition-colors select-none">
-                  <span className="flex items-center gap-2">
-                    <Terminal className="h-3.5 w-3.5" />
-                    DEVELOPER MOCK CONSOLE (LOCAL TEST)
-                  </span>
-                  <span className="transition-transform group-open:rotate-180 text-[10px] font-sans">▼</span>
-                </summary>
-                
-                <form onSubmit={handleDevSignIn} className="mt-4 p-4 rounded-xl border border-slate-800 bg-bg-darker/60 space-y-3">
-                  <div>
-                    <label className="block text-[10px] font-mono text-slate-500 uppercase">Test Name</label>
-                    <input
-                      type="text"
-                      value={devName}
-                      onChange={(e) => setDevName(e.target.value)}
-                      className="w-full h-8 px-3 rounded-lg mono-input text-xs"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-mono text-slate-500 uppercase">Test Email</label>
-                    <input
-                      type="email"
-                      value={devEmail}
-                      onChange={(e) => setDevEmail(e.target.value)}
-                      className="w-full h-8 px-3 rounded-lg mono-input text-xs"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-mono text-slate-500 uppercase">Mock Plan Tier</label>
-                    <select
-                      value={devPlan}
-                      onChange={(e) => setDevPlan(e.target.value)}
-                      className="w-full h-8 px-3 rounded-lg mono-input text-xs bg-black text-white"
-                    >
-                      <option value="free">Free Plan (Rate Limited)</option>
-                      <option value="pro">Pro Plan (Unlimited Access)</option>
-                    </select>
-                  </div>
-                  
-                  <button
-                    type="submit"
-                    disabled={loading !== null}
-                    className="w-full h-8 rounded-lg bg-neon-cyan hover:bg-neon-cyan/80 text-black text-xs font-bold transition-all flex items-center justify-center gap-1.5 font-mono shadow-[0_0_10px_rgba(0,240,255,0.3)]"
-                  >
-                    <Sparkles className="h-3.5 w-3.5" />
-                    Bypass Login & Continue
-                  </button>
-                </form>
-              </details>
-            </div>
           </div>
         )}
       </div>
