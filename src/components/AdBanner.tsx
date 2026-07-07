@@ -83,7 +83,7 @@ export default function AdBanner({ layout, slot = "default" }: AdBannerProps) {
 
   if (adClient) {
     return (
-      <div className={`w-full overflow-hidden my-4 bg-slate-900/10 rounded-xl border border-slate-800/40 p-2 flex justify-center items-center ${
+      <div className={`w-full overflow-hidden my-4 bg-white/[0.02] rounded-xl border border-[var(--color-border)] p-2 flex justify-center items-center ${
         layout === "vertical" ? "min-h-[250px]" : "min-h-[90px]"
       }`}>
         <Script
@@ -110,16 +110,16 @@ export default function AdBanner({ layout, slot = "default" }: AdBannerProps) {
 
   if (layout === "vertical") {
     return (
-      <div className={`glass-card rounded-xl border p-5 bg-bg-card/30 relative overflow-hidden transition-all duration-300 space-y-4 shadow-[0_0_15px_rgba(255,255,255,0.01)] ${selectedAd.color}`}>
-        <div className="absolute top-0 right-0 px-2 py-0.5 bg-white/5 border-l border-b border-white/10 text-slate-500 text-[8px] font-mono font-bold uppercase rounded-bl">
+      <div className={`surface rounded-xl border p-5 relative overflow-hidden transition-all duration-300 space-y-4 ${selectedAd.color}`}>
+        <div className="absolute top-0 right-0 px-2 py-0.5 bg-white/5 border-l border-b border-white/10 text-[var(--color-fg-subtle)] text-[8px] font-mono font-bold uppercase rounded-bl">
           {selectedAd.tag}
         </div>
         <div className="h-9 w-9 rounded-lg bg-black/40 border border-white/5 flex items-center justify-center shrink-0">
           <IconComp className="h-4.5 w-4.5" />
         </div>
         <div className="space-y-1.5">
-          <h4 className="text-xs font-bold font-sans text-white">{selectedAd.title}</h4>
-          <p className="text-[10px] text-slate-400 leading-relaxed font-sans">
+          <h4 className="text-xs font-bold text-white">{selectedAd.title}</h4>
+          <p className="text-[10px] text-[var(--color-fg-muted)] leading-relaxed">
             {selectedAd.desc}
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function AdBanner({ layout, slot = "default" }: AdBannerProps) {
             href={selectedAd.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full h-8 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 font-bold transition-all text-[10px] font-mono flex items-center justify-center gap-1 text-white"
+            className="btn btn-ghost btn-sm w-full"
           >
             {selectedAd.cta}
             <ExternalLink className="h-3 w-3" />
@@ -136,7 +136,7 @@ export default function AdBanner({ layout, slot = "default" }: AdBannerProps) {
         ) : (
           <Link
             href={selectedAd.url}
-            className="w-full h-8 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 font-bold transition-all text-[10px] font-mono flex items-center justify-center gap-1 text-white"
+            className="btn btn-ghost btn-sm w-full"
           >
             {selectedAd.cta}
             <ExternalLink className="h-3 w-3" />
@@ -148,8 +148,8 @@ export default function AdBanner({ layout, slot = "default" }: AdBannerProps) {
 
   // Horizontal Banner Layout
   return (
-    <div className={`glass-card rounded-xl border p-4 bg-bg-card/20 relative overflow-hidden transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.01)] ${selectedAd.color}`}>
-      <div className="absolute top-0 right-0 px-2 py-0.5 bg-white/5 border-l border-b border-white/10 text-slate-500 text-[8px] font-mono font-bold uppercase rounded-bl">
+    <div className={`surface rounded-xl border p-4 relative overflow-hidden transition-all duration-300 ${selectedAd.color}`}>
+      <div className="absolute top-0 right-0 px-2 py-0.5 bg-white/5 border-l border-b border-white/10 text-[var(--color-fg-subtle)] text-[8px] font-mono font-bold uppercase rounded-bl">
         {selectedAd.tag}
       </div>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -158,8 +158,8 @@ export default function AdBanner({ layout, slot = "default" }: AdBannerProps) {
             <IconComp className="h-4.5 w-4.5" />
           </div>
           <div className="space-y-0.5">
-            <h4 className="text-xs font-bold font-sans text-white">{selectedAd.title}</h4>
-            <p className="text-[10px] text-slate-400 max-w-xl leading-normal font-sans">
+            <h4 className="text-xs font-bold text-white">{selectedAd.title}</h4>
+            <p className="text-[10px] text-[var(--color-fg-muted)] max-w-xl leading-normal">
               {selectedAd.desc}
             </p>
           </div>
@@ -169,7 +169,7 @@ export default function AdBanner({ layout, slot = "default" }: AdBannerProps) {
             href={selectedAd.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 h-8 px-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 font-bold transition-all text-[10px] font-mono flex items-center justify-center gap-1 text-white"
+            className="btn btn-ghost btn-sm shrink-0"
           >
             {selectedAd.cta}
             <ExternalLink className="h-3 w-3" />
@@ -177,7 +177,7 @@ export default function AdBanner({ layout, slot = "default" }: AdBannerProps) {
         ) : (
           <Link
             href={selectedAd.url}
-            className="shrink-0 h-8 px-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 font-bold transition-all text-[10px] font-mono flex items-center justify-center gap-1 text-white"
+            className="btn btn-ghost btn-sm shrink-0"
           >
             {selectedAd.cta}
             <ExternalLink className="h-3 w-3" />
