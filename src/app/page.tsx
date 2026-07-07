@@ -37,7 +37,7 @@ export default async function HomePage() {
         <div className="text-center space-y-6 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-xs font-mono tracking-wider uppercase">
             <Terminal className="h-3.5 w-3.5" />
-            Phase 1 MVP Active
+            ⚡ Secure & Fully Functional Suite
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white font-sans leading-tight">
             The Multi-Tool Arsenal for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-indigo-500">Engineers</span>
@@ -65,7 +65,7 @@ export default async function HomePage() {
         {/* Global Statistics Indicators */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {[
-            { value: `${totalTools}+`, label: "MVP Tools" },
+            { value: `${totalTools}+`, label: "Verified Tools" },
             { value: "1.2M", label: "Monthly Executions" },
             { value: "< 50ms", label: "Client Latency" },
             { value: "99.99%", label: "API Uptime" },

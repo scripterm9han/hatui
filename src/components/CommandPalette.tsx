@@ -7,7 +7,7 @@ import { toolsList } from "@/lib/tools-data";
 
 /**
  * Premium Spotlight Search Command Palette (Ctrl+K / Cmd+K).
- * Allows engineers to quickly search, filter, and keyboard-navigate between the 6 MVP tools.
+ * Allows engineers to quickly search, filter, and keyboard-navigate between the developer tools.
  */
 export default function CommandPalette() {
   const router = useRouter();
