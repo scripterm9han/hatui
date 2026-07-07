@@ -26,112 +26,99 @@ export default async function HomePage() {
   const totalTools = toolsList.length;
 
   return (
-    <div className="min-h-screen bg-bg-dark grid-bg pt-28 pb-20 relative">
-      {/* Dynamic top-center atmospheric glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-neon-cyan/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-neon-violet/5 blur-[100px] rounded-full pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 space-y-16 relative z-10">
-        
-        {/* Cinematic Hero Title Section */}
-        <div className="text-center space-y-6 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-xs font-mono tracking-wider uppercase">
-            <Terminal className="h-3.5 w-3.5" />
-            ⚡ Secure & Fully Functional Suite
+    <div className="min-h-screen pt-28 pb-24 relative">
+      <div className="shell space-y-20 relative z-10">
+        {/* Hero */}
+        <section className="text-center space-y-7 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-white/[0.03] chip">
+            <Terminal className="h-3.5 w-3.5 text-[var(--color-accent)]" />
+            Secure &amp; fully functional suite
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white font-sans leading-tight">
-            The Multi-Tool Arsenal for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-indigo-500">Engineers</span>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-[1.05]">
+            The Multi-Tool Arsenal for{" "}
+            <span className="text-gradient">Engineers</span>
           </h1>
-          <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-sans">
-            Stop opening 50 different browser tabs. Hatiyar houses your essential converters, regex parsers, QR engines, and flagship AI ATS resume scoring and roasting under one unified, cinematic interface.
+          <p className="text-[var(--color-fg-muted)] text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            Stop opening 50 different browser tabs. Hatiyar houses your essential converters, regex parsers, QR engines, and flagship AI ATS resume scoring and roasting under one unified interface.
           </p>
-          <div className="flex justify-center gap-4 pt-2">
-            <Link
-              href="/tools"
-              className="flex items-center gap-2 h-11 px-6 rounded-xl bg-white text-zinc-950 hover:bg-zinc-200 font-semibold transition-all text-xs font-sans shadow-[0_4px_20px_rgba(255,255,255,0.1)] hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
-            >
+          <div className="flex justify-center gap-3 pt-2">
+            <Link href="/tools" className="btn btn-primary btn-lg">
               Enter the Arsenal
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link
-              href="/pricing"
-              className="flex items-center gap-2 h-11 px-6 rounded-xl btn-glass-slate hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
-            >
+            <Link href="/pricing" className="btn btn-ghost btn-lg">
               View Pro Pricing
             </Link>
           </div>
-        </div>
+        </section>
 
-        {/* Global Statistics Indicators */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        {/* Statistics */}
+        <section className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {[
             { value: `${totalTools}+`, label: "Verified Tools" },
             { value: "1.2M", label: "Monthly Executions" },
             { value: "< 50ms", label: "Client Latency" },
             { value: "99.99%", label: "API Uptime" },
           ].map((stat, i) => (
-            <div key={i} className="glass-card rounded-xl border border-white/5 p-5 text-center shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+            <div key={i} className="surface rounded-xl p-5 text-center">
               <span className="block text-2xl md:text-3xl font-extrabold text-white font-mono">{stat.value}</span>
-              <span className="block text-[10px] font-mono uppercase tracking-wider text-slate-500 mt-1">{stat.label}</span>
+              <span className="block text-[10px] font-mono uppercase tracking-wider text-[var(--color-fg-subtle)] mt-1.5">{stat.label}</span>
             </div>
           ))}
-        </div>
+        </section>
 
-        {/* Featured Tools Grid */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/5 pb-4">
-            <h2 className="text-xl font-bold text-white font-sans flex items-center gap-2">
-              <Zap className="h-5 w-5 text-neon-cyan" />
+        {/* Featured Tools */}
+        <section className="space-y-6">
+          <div className="section-head">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <Zap className="h-5 w-5 text-[var(--color-accent)]" />
               Featured Arsenal
             </h2>
-            <Link href="/tools" className="text-xs font-mono text-neon-cyan hover:underline flex items-center gap-1">
+            <Link href="/tools" className="text-xs font-mono text-[var(--color-accent)] hover:underline flex items-center gap-1">
               View All {totalTools} Tools
               <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {toolsList.slice(0, 6).map((tool) => {
               const IconComp = iconMap[tool.icon] || Binary;
               return (
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="glass-card rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden h-[240px]"
+                  className="surface surface-hover rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden h-[240px]"
                 >
-                  {/* Subtle hover glow accent */}
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-neon-cyan/5 blur-2xl rounded-full group-hover:bg-neon-cyan/15 transition-all duration-300" />
-                  
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--color-accent)]/5 blur-2xl rounded-full group-hover:bg-[var(--color-accent)]/15 transition-all duration-300" />
+
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-neon-cyan group-hover:border-neon-cyan/40 transition-all shadow-[inset_1px_1px_0px_rgba(255,255,255,0.05)]">
+                      <div className="h-11 w-11 rounded-xl bg-white/[0.04] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-fg-muted)] group-hover:text-[var(--color-accent)] group-hover:border-[var(--color-accent)]/40 transition-all">
                         <IconComp className="h-5 w-5" />
                       </div>
-                      <span className="text-[10px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-md shadow-[inset_1px_1px_0px_rgba(255,255,255,0.02)]">
-                        {tool.monthlyUses} monthly uses
+                      <span className="text-[10px] font-mono text-[var(--color-fg-subtle)] bg-white/[0.03] border border-[var(--color-border)] px-2 py-0.5 rounded-md">
+                        {tool.monthlyUses} uses
                       </span>
                     </div>
 
-                    <div className="space-y-1">
-                      <h3 className="text-base font-bold text-white group-hover:text-neon-cyan transition-colors font-sans flex items-center gap-1.5">
+                    <div className="space-y-1.5">
+                      <h3 className="text-base font-bold text-white group-hover:text-[var(--color-accent)] transition-colors flex items-center gap-1.5">
                         {tool.name}
                         {tool.isAi && (
-                          <span className="text-[9px] font-mono text-neon-violet font-semibold uppercase tracking-wider bg-neon-violet/10 border border-neon-violet/20 px-1.5 py-0.2 rounded">
-                            AI
-                          </span>
+                          <span className="chip chip-violet">AI</span>
                         )}
                       </h3>
-                      <p className="text-slate-400 text-xs leading-relaxed line-clamp-3 font-sans">
+                      <p className="text-[var(--color-fg-muted)] text-sm leading-relaxed line-clamp-3">
                         {tool.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between border-t border-slate-800/60 pt-4 mt-auto">
-                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
+                  <div className="flex items-center justify-between border-t border-[var(--color-border)] pt-4 mt-auto">
+                    <span className="text-[10px] font-mono text-[var(--color-fg-subtle)] uppercase tracking-wider">
                       {tool.category}
                     </span>
-                    <span className="text-xs font-mono text-slate-400 group-hover:text-neon-cyan transition-colors flex items-center gap-1">
+                    <span className="text-xs font-mono text-[var(--color-fg-muted)] group-hover:text-[var(--color-accent)] transition-colors flex items-center gap-1">
                       Launch
                       <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -145,8 +132,7 @@ export default async function HomePage() {
               <AdBanner layout="horizontal" />
             </div>
           )}
-        </div>
-
+        </section>
       </div>
     </div>
   );
