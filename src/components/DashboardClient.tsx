@@ -105,32 +105,30 @@ export default function DashboardClient({
   return (
     <div className="space-y-8">
       {/* Top Banner with plan metadata */}
-      <div className="glass-card rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-neon-cyan/5 blur-3xl rounded-full pointer-events-none" />
-        
-        <div className="space-y-1.5 z-10 font-sans">
+      <div className="surface rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-accent)]/5 blur-3xl rounded-full pointer-events-none" />
+
+        <div className="space-y-1.5 z-10">
           <div className="flex items-center gap-2">
             <h2 className="text-xl font-bold text-white">Welcome, {userName || userEmail}</h2>
             {userPlan === "pro" ? (
-              <span className="px-2.5 py-0.5 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan text-[10px] font-mono font-bold flex items-center gap-1 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
-                <Star className="h-3 w-3 fill-neon-cyan" />
-                PRO MEMBER
+              <span className="chip chip-accent">
+                <Star className="h-3 w-3" />
+                Pro Member
               </span>
             ) : (
-              <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-400 text-[10px] font-mono shadow-[inset_1px_1px_0px_rgba(255,255,255,0.02)]">
-                FREE USER
-              </span>
+              <span className="chip">Free User</span>
             )}
           </div>
-          <p className="text-slate-400 text-sm">Account email: {userEmail}</p>
+          <p className="text-[var(--color-fg-muted)] text-sm">Account email: {userEmail}</p>
         </div>
 
         {userPlan !== "pro" && (
           <button
             onClick={() => router.push("/pricing")}
-            className="flex items-center gap-2 h-11 px-5 rounded-xl bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-xs font-mono shadow-[inset_1px_1px_0px_rgba(255,255,255,0.45),0_0_15px_rgba(0,240,255,0.25)] z-10 hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0 active:scale-100"
+            className="btn btn-primary btn-md z-10"
           >
-            <Zap className="h-4.5 w-4.5 fill-black" />
+            <Zap className="h-4.5 w-4.5" />
             Upgrade to Pro • ₹299/mo
           </button>
         )}
@@ -139,80 +137,80 @@ export default function DashboardClient({
       {/* Stats Meters grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* ATS Checker Meter */}
-        <div className="glass-card rounded-xl p-6 space-y-4">
+        <div className="surface rounded-xl p-6 space-y-4">
           <div className="flex justify-between items-center">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400">ATS Checker Usage</h4>
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--color-fg-muted)]">ATS Checker Usage</h4>
             <span className="text-xs font-mono font-bold text-white">
               {checkerUsageToday} / {userPlan === "pro" ? "∞" : "10"} today
             </span>
           </div>
-          <div className="h-2.5 w-full bg-black/60 rounded-full overflow-hidden border border-white/5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
+          <div className="h-2.5 w-full bg-black/50 rounded-full overflow-hidden border border-[var(--color-border)]">
             <div
-              className="h-full bg-neon-cyan rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(0,240,255,0.4)]"
+              className="h-full bg-[var(--color-accent)] rounded-full transition-all duration-500"
               style={{ width: `${Math.min((checkerUsageToday / 10) * 100, 100)}%` }}
             />
           </div>
-          <p className="text-[10px] font-mono text-slate-500">
+          <p className="text-[10px] font-mono text-[var(--color-fg-subtle)]">
             {userPlan === "pro" ? "You have unlimited AI scans." : "Resets daily. Pro has unlimited checks."}
           </p>
         </div>
 
         {/* Resume Roaster Meter */}
-        <div className="glass-card rounded-xl p-6 space-y-4">
+        <div className="surface rounded-xl p-6 space-y-4">
           <div className="flex justify-between items-center">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400">AI Roaster Usage</h4>
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--color-fg-muted)]">AI Roaster Usage</h4>
             <span className="text-xs font-mono font-bold text-white">
               {roasterUsageToday} / {userPlan === "pro" ? "∞" : "5"} today
             </span>
           </div>
-          <div className="h-2.5 w-full bg-black/60 rounded-full overflow-hidden border border-white/5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
+          <div className="h-2.5 w-full bg-black/50 rounded-full overflow-hidden border border-[var(--color-border)]">
             <div
-              className="h-full bg-neon-violet rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(139,92,246,0.4)]"
+              className="h-full bg-[var(--color-violet)] rounded-full transition-all duration-500"
               style={{ width: `${Math.min((roasterUsageToday / 5) * 100, 100)}%` }}
             />
           </div>
-          <p className="text-[10px] font-mono text-slate-500">
+          <p className="text-[10px] font-mono text-[var(--color-fg-subtle)]">
             {userPlan === "pro" ? "You have unlimited AI roasts." : "Resets daily. Pro has unlimited checks."}
           </p>
         </div>
 
         {/* Most-Used Tool Ranking */}
-        <div className="glass-card rounded-xl p-6 space-y-4">
-          <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-            <BarChart2 className="h-4 w-4 text-neon-cyan" />
+        <div className="surface rounded-xl p-6 space-y-4">
+          <h4 className="text-xs font-mono uppercase tracking-wider text-[var(--color-fg-muted)] flex items-center gap-1.5">
+            <BarChart2 className="h-4 w-4 text-[var(--color-accent)]" />
             Top Used Arsenal
           </h4>
           {topTools.length > 0 ? (
             <div className="space-y-2 max-h-24 overflow-y-auto">
               {topTools.map((tool, index) => (
                 <div key={tool.slug} className="flex justify-between items-center text-xs font-mono">
-                  <span className="text-slate-300 truncate max-w-[150px]">
+                  <span className="text-[var(--color-fg-muted)] truncate max-w-[150px]">
                     {index + 1}. {getToolName(tool.slug)}
                   </span>
-                  <span className="text-neon-cyan font-bold">{tool.count} times</span>
+                  <span className="text-[var(--color-accent)] font-bold">{tool.count} times</span>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-xs font-mono text-slate-500 py-2">No usage logs recorded yet.</p>
+            <p className="text-xs font-mono text-[var(--color-fg-subtle)] py-2">No usage logs recorded yet.</p>
           )}
         </div>
       </div>
 
       {/* Saved History Lists */}
-      <div className="glass-card rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-white font-sans mb-4 flex items-center gap-2">
-          <FileText className="h-5 w-5 text-neon-cyan" />
+      <div className="surface rounded-xl p-6">
+        <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <FileText className="h-5 w-5 text-[var(--color-accent)]" />
           Saved Output History
           {userPlan !== "pro" && (
-            <span className="text-[10px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-md shadow-[inset_1px_1px_0px_rgba(255,255,255,0.02)]">
+            <span className="chip">
               Free rolling limit: {history.length} / 20 saved per tool
             </span>
           )}
         </h3>
 
         {history.length > 0 ? (
-          <div className="divide-y divide-white/5">
+          <div className="divide-y divide-[var(--color-border)]">
             {history.map((item) => (
               <div key={item.id} className="py-4">
                 <div className="flex items-center justify-between gap-4">
@@ -221,10 +219,10 @@ export default function DashboardClient({
                     className="flex-1 min-w-0 cursor-pointer flex items-center justify-between"
                   >
                     <div className="space-y-1">
-                      <h4 className="text-sm font-semibold text-white hover:text-neon-cyan transition-colors">
+                      <h4 className="text-sm font-semibold text-white hover:text-[var(--color-accent)] transition-colors">
                         {getToolName(item.toolSlug)}
                       </h4>
-                      <div className="flex items-center gap-3 text-xs text-slate-500 font-mono">
+                      <div className="flex items-center gap-3 text-xs text-[var(--color-fg-subtle)] font-mono">
                         <span className="flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
                           {new Date(item.createdAt).toLocaleDateString()}
@@ -234,7 +232,7 @@ export default function DashboardClient({
                         </span>
                       </div>
                     </div>
-                    <button className="text-slate-500 hover:text-neon-cyan ml-2 shrink-0">
+                    <button className="text-[var(--color-fg-subtle)] hover:text-[var(--color-accent)] ml-2 shrink-0">
                       {expandedId === item.id ? <ChevronUp className="h-4.5 w-4.5" /> : <ChevronDown className="h-4.5 w-4.5" />}
                     </button>
                   </div>
@@ -242,7 +240,7 @@ export default function DashboardClient({
                   <button
                     onClick={() => handleDelete(item.id)}
                     disabled={deletingId === item.id}
-                    className="p-2 rounded-lg border border-slate-800 hover:border-red-500/30 hover:bg-red-500/10 text-slate-500 hover:text-red-400 transition-all shrink-0 shadow-[inset_1px_1px_0px_rgba(255,255,255,0.02)]"
+                    className="btn btn-danger-ghost btn-sm"
                     title="Delete Saved Output"
                   >
                     <Trash2 className="h-4 w-4" />
@@ -250,17 +248,17 @@ export default function DashboardClient({
                 </div>
 
                 {expandedId === item.id && (
-                  <div className="mt-4 p-4 rounded-xl border border-white/5 bg-black/45 space-y-4 animate-fadeIn font-mono text-xs text-slate-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+                  <div className="mt-4 p-4 rounded-xl border border-[var(--color-border)] bg-black/40 space-y-4 animate-fade-in font-mono text-xs text-[var(--color-fg-muted)]">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <span className="block text-slate-500 uppercase tracking-wider text-[10px] mb-1">Saved Input</span>
-                        <pre className="p-3 rounded bg-black/50 overflow-x-auto whitespace-pre-wrap max-h-45 border border-white/5 shadow-[inset_0_1px_3px_rgba(0,0,0,0.4)]">
+                        <span className="block text-[var(--color-fg-subtle)] uppercase tracking-wider text-[10px] mb-1">Saved Input</span>
+                        <pre className="p-3 rounded bg-black/50 overflow-x-auto whitespace-pre-wrap max-h-45 border border-[var(--color-border)]">
                           {item.inputRef ? JSON.stringify(JSON.parse(item.inputRef), null, 2) : "None"}
                         </pre>
                       </div>
                       <div>
-                        <span className="block text-slate-500 uppercase tracking-wider text-[10px] mb-1">Saved Output</span>
-                        <pre className="p-3 rounded bg-black/50 overflow-x-auto whitespace-pre-wrap max-h-45 border border-white/5 text-neon-cyan shadow-[inset_0_1px_3px_rgba(0,0,0,0.4)]">
+                        <span className="block text-[var(--color-fg-subtle)] uppercase tracking-wider text-[10px] mb-1">Saved Output</span>
+                        <pre className="p-3 rounded bg-black/50 overflow-x-auto whitespace-pre-wrap max-h-45 border border-[var(--color-border)] text-[var(--color-accent)]">
                           {item.outputRef && item.toolSlug !== "resume-roaster"
                             ? JSON.stringify(JSON.parse(item.outputRef), null, 2)
                             : getOutputPreview(item.outputRef)}
@@ -273,7 +271,7 @@ export default function DashboardClient({
             ))}
           </div>
         ) : (
-          <div className="text-center py-12 text-slate-500 text-sm font-mono">
+          <div className="text-center py-12 text-[var(--color-fg-subtle)] text-sm font-mono">
             No saved history found. Use tools and hit the "Save Output" button.
           </div>
         )}

@@ -279,55 +279,50 @@ export default async function ToolPage({ params }: PageProps) {
   const otherTools = toolsList.filter((t) => t.slug !== tool.slug).slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-bg-dark grid-bg pt-24 pb-16 px-4">
-      <div className="max-w-6xl mx-auto space-y-8">
-        
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="shell space-y-8">
         {/* Tool Header Title & Badges */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-white font-sans">
+            <h1 className="text-3xl font-bold tracking-tight text-white">
               {tool.name}
             </h1>
             {tool.isAi && (
-              <span className="px-2.5 py-0.5 rounded-full bg-neon-violet/10 border border-neon-violet/30 text-neon-violet text-[10px] font-mono font-bold animate-pulse">
-                AI ENGINE
-              </span>
+              <span className="chip chip-violet">AI Engine</span>
             )}
-            <span className="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-slate-400 text-[10px] font-mono">
-              {tool.category}
-            </span>
+            <span className="chip">{tool.category}</span>
           </div>
-          <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+          <p className="text-[var(--color-fg-muted)] text-sm max-w-2xl leading-relaxed">
             {tool.description}
           </p>
         </div>
 
         {/* Dynamic Two-Column Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6 items-start">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
+
           {/* Left Column: Tool Container & FAQs */}
           <div className="space-y-6">
-            <div className="glass-card rounded-2xl border border-border-card p-6 md:p-8">
+            <div className="surface rounded-2xl p-6 md:p-8">
               {renderToolComponent()}
             </div>
 
             {/* Detailed SEO Instructions */}
-            <div className="glass-card rounded-2xl border border-border-card/40 p-8 space-y-6 bg-bg-darker/40">
-              <h3 className="text-sm font-bold text-white font-mono border-b border-white/5 pb-2 flex items-center gap-2">
-                <BookOpen className="h-4.5 w-4.5 text-neon-cyan" />
-                Documentation & Usage Guidelines
+            <div className="surface rounded-2xl p-8 space-y-6">
+              <h3 className="text-sm font-bold text-white border-b border-[var(--color-border)] pb-3 flex items-center gap-2">
+                <BookOpen className="h-4.5 w-4.5 text-[var(--color-accent)]" />
+                Documentation &amp; Usage Guidelines
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-slate-400 leading-relaxed font-sans">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-[var(--color-fg-muted)] leading-relaxed">
                 <div className="space-y-3">
-                  <h4 className="font-bold text-white uppercase tracking-wider font-mono">What is this tool?</h4>
+                  <h4 className="font-bold text-white uppercase tracking-wider text-[11px] font-mono">What is this tool?</h4>
                   <p>
-                    The {tool.name} is a high-performance utility designed to streamline developer workflows. 
-                    Built to operate entirely {tool.isAi ? "with advanced server-side AI processing" : "client-side inside your browser for zero latency"}, 
+                    The {tool.name} is a high-performance utility designed to streamline developer workflows.
+                    Built to operate entirely {tool.isAi ? "with advanced server-side AI processing" : "client-side inside your browser for zero latency"},
                     it ensures maximum security and quick response times.
                   </p>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-bold text-white uppercase tracking-wider font-mono">How do I use it?</h4>
+                  <h4 className="font-bold text-white uppercase tracking-wider text-[11px] font-mono">How do I use it?</h4>
                   <ol className="list-decimal list-inside space-y-1.5">
                     <li>Input parameters in the editor or upload file fields.</li>
                     <li>Adjust formatting options, sizes, or matching triggers.</li>
@@ -341,42 +336,42 @@ export default async function ToolPage({ params }: PageProps) {
             )}
           </div>
 
-          {/* Right Column: Sidebar (Gated Ads + Uptime + Quick Index) */}
+          {/* Right Column: Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24">
-            
+
             {/* Gated Sponsor Ad Card (Free users only) */}
             {userPlan !== "pro" ? (
-              <div className="glass-card rounded-xl border-2 border-neon-cyan/40 p-5 bg-neon-cyan/5 space-y-4 relative overflow-hidden shadow-[0_0_15px_rgba(0,240,255,0.05)]">
-                <div className="absolute top-0 right-0 px-2 py-0.5 bg-neon-cyan text-black text-[8px] font-mono font-bold uppercase rounded-bl">
-                  SPONSOR
+              <div className="surface-accent rounded-xl p-5 space-y-4 relative overflow-hidden">
+                <div className="absolute top-0 right-0 px-2 py-0.5 bg-[var(--color-accent)] text-white text-[8px] font-mono font-bold uppercase rounded-bl">
+                  Sponsor
                 </div>
-                <span className="block text-[8px] font-mono text-slate-500 uppercase tracking-wider">Sponsored Promotion</span>
-                
+                <span className="block text-[9px] font-mono text-[var(--color-fg-subtle)] uppercase tracking-wider">Sponsored Promotion</span>
+
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold text-white flex items-center gap-1">
-                    <Zap className="h-3.5 w-3.5 fill-neon-cyan text-neon-cyan" />
+                  <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
+                    <Zap className="h-3.5 w-3.5 text-[var(--color-accent)]" />
                     Unlock Unlimited AI Checks
                   </h4>
-                  <p className="text-[10px] text-slate-400 leading-relaxed font-sans">
+                  <p className="text-[11px] text-[var(--color-fg-muted)] leading-relaxed">
                     Tired of daily limits? Hatiyar Pro offers unlimited Resume Checks, Roasts, and saves. Remove all ads.
                   </p>
                 </div>
-                
+
                 <Link
                   href="/pricing"
-                  className="w-full h-8 rounded-lg bg-neon-cyan text-black hover:bg-neon-cyan/85 font-bold transition-all text-[10px] font-mono flex items-center justify-center gap-1"
+                  className="btn btn-primary btn-sm w-full"
                 >
                   Upgrade to Pro • ₹299
                   <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
             ) : (
-              <div className="glass-card rounded-xl border border-border-card p-5 bg-bg-card/40 space-y-3">
-                <h4 className="text-xs font-bold text-white flex items-center gap-1.5 font-mono">
-                  <ShieldCheck className="h-4 w-4 text-neon-cyan" />
+              <div className="surface rounded-xl p-5 space-y-3">
+                <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
+                  <ShieldCheck className="h-4 w-4 text-[var(--color-accent)]" />
                   Pro Status Active
                 </h4>
-                <p className="text-[10px] text-slate-400 leading-relaxed font-sans">
+                <p className="text-[11px] text-[var(--color-fg-muted)] leading-relaxed">
                   Thanks for supporting Hatiyar! All daily rate limits are removed, and sponsor ads are disabled.
                 </p>
               </div>
@@ -387,19 +382,19 @@ export default async function ToolPage({ params }: PageProps) {
             )}
 
             {/* Quick Tools Navigation Index */}
-            <div className="glass-card rounded-xl border border-border-card p-5 space-y-3">
+            <div className="surface rounded-xl p-5 space-y-3">
               <h4 className="text-xs font-bold text-white font-mono">Popular Tools</h4>
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 {otherTools.map((t) => {
                   const IconComp = iconMap[t.icon] || Binary;
                   return (
                     <Link
                       key={t.slug}
                       href={`/tools/${t.slug}`}
-                      className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-bg-card-hover text-slate-400 hover:text-neon-cyan transition-all text-xs"
+                      className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-white/5 text-[var(--color-fg-muted)] hover:text-[var(--color-accent)] transition-all text-sm"
                     >
                       <IconComp className="h-4 w-4 shrink-0" />
-                      <span className="truncate font-sans font-medium">{t.name}</span>
+                      <span className="truncate font-medium">{t.name}</span>
                     </Link>
                   );
                 })}
@@ -407,9 +402,9 @@ export default async function ToolPage({ params }: PageProps) {
             </div>
 
             {/* Active Systems Status */}
-            <div className="glass-card rounded-xl border border-border-card p-4 flex items-center justify-between text-[9px] font-mono text-slate-500">
+            <div className="surface rounded-xl p-4 flex items-center justify-between text-[10px] font-mono text-[var(--color-fg-subtle)]">
               <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-ping" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-success)] animate-pulse" />
                 Systems Operational
               </span>
               <span>Uptime: 99.98%</span>

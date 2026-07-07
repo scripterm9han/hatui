@@ -40,25 +40,22 @@ export default function SignInPage() {
 
 
   return (
-    <div className="min-h-screen bg-bg-dark grid-bg flex flex-col items-center justify-center p-4 relative">
-      {/* Decorative top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-neon-cyan/5 blur-3xl rounded-full pointer-events-none" />
-
-      <div className="w-full max-w-md glass-card rounded-2xl border border-border-card p-8 z-10">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
+      <div className="w-full max-w-md surface rounded-2xl p-8 z-10">
         <div className="flex flex-col items-center text-center mb-8">
-          <div className="h-12 w-12 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
-            <Shield className="h-6 w-6 text-neon-cyan" />
+          <div className="h-12 w-12 rounded-xl btn-accent-soft flex items-center justify-center mb-3">
+            <Shield className="h-6 w-6 text-[var(--color-accent)]" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white font-sans flex items-center gap-2">
-            Sign In to <span className="text-neon-cyan font-mono">Hatiyar</span>
+          <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            Sign In to <span className="text-[var(--color-accent)] font-mono">Hatiyar</span>
           </h1>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="text-[var(--color-fg-muted)] text-sm mt-1.5">
             Access pro features, AI tools, and save your output history.
           </p>
         </div>
 
         {error && (
-          <div className="mb-6 p-3 rounded-lg border border-red-500/30 bg-red-500/10 text-red-400 text-xs text-center">
+          <div className="mb-6 p-3 rounded-lg border border-[var(--color-danger)]/30 bg-[var(--color-danger)]/10 text-[var(--color-danger)] text-xs text-center">
             {error === "OAuthSignin" || error === "OAuthCallback"
               ? "Error linking your Google account. Please try again."
               : "Authentication failed. Please verify credentials."}
@@ -66,10 +63,10 @@ export default function SignInPage() {
         )}
 
         {sentMessage ? (
-          <div className="p-4 rounded-xl border border-neon-cyan/30 bg-neon-cyan/5 text-center">
-            <Mail className="h-10 w-10 text-neon-cyan mx-auto mb-3 animate-pulse" />
+          <div className="p-4 rounded-xl border border-[var(--color-accent)]/30 bg-[var(--color-accent-soft)] text-center">
+            <Mail className="h-10 w-10 text-[var(--color-accent)] mx-auto mb-3 animate-pulse" />
             <h3 className="text-white font-semibold text-lg">Check your email</h3>
-            <p className="text-slate-400 text-sm mt-1">
+            <p className="text-[var(--color-fg-muted)] text-sm mt-1.5">
               We sent a magic link to <strong className="text-white">{email}</strong>. Click the link in your inbox to sign in instantly.
             </p>
           </div>
@@ -91,15 +88,15 @@ export default function SignInPage() {
             </button>
 
             <div className="relative flex py-2 items-center">
-              <div className="flex-grow border-t border-slate-800"></div>
-              <span className="flex-shrink mx-4 text-slate-500 text-xs uppercase tracking-wider font-mono">or</span>
-              <div className="flex-grow border-t border-slate-800"></div>
+              <div className="flex-grow border-t border-[var(--color-border)]"></div>
+              <span className="flex-shrink mx-4 text-[var(--color-fg-subtle)] text-xs uppercase tracking-wider font-mono">or</span>
+              <div className="flex-grow border-t border-[var(--color-border)]"></div>
             </div>
 
             {/* Email Magic Link */}
             <form onSubmit={handleEmailSignIn} className="space-y-4">
               <div>
-                <label htmlFor="email" className="block text-slate-400 text-xs font-mono mb-1.5 uppercase tracking-wider">
+                <label htmlFor="email" className="block text-[var(--color-fg-muted)] text-xs font-mono mb-1.5 uppercase tracking-wider">
                   Email Address
                 </label>
                 <input
@@ -109,7 +106,7 @@ export default function SignInPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-11 px-4 rounded-xl mono-input text-sm"
+                  className="field h-11 px-4 text-sm"
                   disabled={loading !== null}
                 />
               </div>
@@ -117,7 +114,7 @@ export default function SignInPage() {
               <button
                 type="submit"
                 disabled={loading !== null || !email}
-                className="w-full flex items-center justify-center gap-2 h-11 rounded-xl bg-neon-cyan/10 border border-neon-cyan/40 text-neon-cyan hover:bg-neon-cyan/20 transition-all font-medium text-sm disabled:opacity-50 font-mono shadow-[0_0_15px_rgba(0,240,255,0.05)]"
+                className="btn btn-accent-soft btn-md w-full disabled:opacity-50"
               >
                 {loading === "email" ? "Sending..." : "Send Magic Link"}
                 <ArrowRight className="h-4 w-4" />

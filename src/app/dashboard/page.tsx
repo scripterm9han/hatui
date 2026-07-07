@@ -82,13 +82,13 @@ export default async function DashboardPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-bg-dark grid-bg pt-24 pb-16 px-4">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="shell max-w-4xl space-y-8">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-white font-sans">
-            User <span className="text-neon-cyan font-mono">Dashboard</span>
+          <h1 className="text-3xl font-bold tracking-tight text-white">
+            User <span className="text-[var(--color-accent)] font-mono">Dashboard</span>
           </h1>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="text-[var(--color-fg-muted)] text-sm mt-1.5">
             Analyze your workspace productivity, limits, and saved outputs.
           </p>
         </div>
