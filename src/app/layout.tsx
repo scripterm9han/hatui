@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlowEffect from "@/components/GlowEffect";
 import CommandPalette from "@/components/CommandPalette";
+import StarryFireflyBackground from "@/components/StarryFireflyBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +33,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-ambient text-[var(--foreground)]">
+      <body className="min-h-full flex flex-col bg-[#030705] text-[var(--foreground)] relative">
         <SessionProvider>
+          {/* Animated starry sky, fireflies and emerald auroras */}
+          <StarryFireflyBackground />
+
           {/* Subtle grid wash */}
           <div className="fixed inset-0 grid-bg pointer-events-none z-0" />
           {/* Global cursor-follow atmospheric glow & shortcut palette */}

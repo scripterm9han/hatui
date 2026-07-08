@@ -1,21 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { Search, Binary, Braces, RefreshCw, QrCode, FileCheck, Flame, ArrowUpDown, LayoutGrid, ArrowRight } from "lucide-react";
+import { Search, ArrowUpDown, LayoutGrid } from "lucide-react";
 import { toolsList } from "@/lib/tools-data";
 import { useSession } from "next-auth/react";
 import AdBanner from "@/components/AdBanner";
-
-// Map icon strings to Lucide components
-const iconMap: Record<string, any> = {
-  Binary: Binary,
-  Braces: Braces,
-  RefreshCw: RefreshCw,
-  QrCode: QrCode,
-  FileCheck: FileCheck,
-  Flame: Flame,
-};
+import ToolCard from "@/components/ToolCard";
 
 type SortOption = "popularity" | "alphabetical";
 
@@ -108,51 +98,9 @@ export default function ToolsIndexPage() {
         {/* Dynamic Tools Grid */}
         {processedTools.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {processedTools.map((tool) => {
-              const IconComp = iconMap[tool.icon] || Binary;
-              return (
-                <Link
-                  key={tool.slug}
-                  href={`/tools/${tool.slug}`}
-                  className="surface surface-hover rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden h-[240px]"
-                >
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--color-accent)]/5 blur-2xl rounded-full group-hover:bg-[var(--color-accent)]/15 transition-all duration-300" />
-
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="h-11 w-11 rounded-xl bg-white/[0.04] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-fg-muted)] group-hover:text-[var(--color-accent)] group-hover:border-[var(--color-accent)]/40 transition-all">
-                        <IconComp className="h-5 w-5" />
-                      </div>
-                      <span className="text-[10px] font-mono text-[var(--color-fg-subtle)] bg-white/[0.03] border border-[var(--color-border)] px-2 py-0.5 rounded-md">
-                        #{100 - tool.popularity}
-                      </span>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <h3 className="text-base font-bold text-white group-hover:text-[var(--color-accent)] transition-colors flex items-center gap-1.5">
-                        {tool.name}
-                        {tool.isAi && (
-                          <span className="chip chip-violet">AI</span>
-                        )}
-                      </h3>
-                      <p className="text-[var(--color-fg-muted)] text-sm leading-relaxed line-clamp-3">
-                        {tool.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between border-t border-[var(--color-border)] pt-4 mt-auto">
-                    <span className="text-[10px] font-mono text-[var(--color-fg-subtle)] uppercase tracking-wider">
-                      {tool.category}
-                    </span>
-                    <span className="text-xs font-mono text-[var(--color-accent)] flex items-center gap-1">
-                      Launch Tool
-                      <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
+            {processedTools.map((tool, idx) => (
+              <ToolCard key={tool.slug} tool={tool} index={idx} />
+            ))}
           </div>
         ) : (
           <div className="text-center py-20 surface rounded-xl text-[var(--color-fg-muted)] text-sm font-mono">
