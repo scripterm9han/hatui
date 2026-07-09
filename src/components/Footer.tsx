@@ -8,9 +8,7 @@ export default function Footer() {
         {/* Brand Information */}
         <div className="space-y-3 max-w-sm">
           <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-lg btn-accent-soft flex items-center justify-center">
-              <Shield className="h-4 w-4 text-[var(--color-accent)]" />
-            </div>
+            <img src="/logo.jpg" alt="Hatiyar Logo" className="h-7 w-7 rounded-lg object-cover" />
             <span className="text-white font-bold font-mono tracking-wider text-sm">HATIYAR</span>
           </div>
           <p className="text-sm text-[var(--color-fg-subtle)] leading-relaxed">

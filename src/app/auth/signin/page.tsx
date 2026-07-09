@@ -43,9 +43,7 @@ export default function SignInPage() {
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
       <div className="w-full max-w-md surface rounded-2xl p-8 z-10">
         <div className="flex flex-col items-center text-center mb-8">
-          <div className="h-12 w-12 rounded-xl btn-accent-soft flex items-center justify-center mb-3">
-            <Shield className="h-6 w-6 text-[var(--color-accent)]" />
-          </div>
+          <img src="/logo.jpg" alt="Hatiyar Logo" className="h-12 w-12 rounded-xl object-cover mb-3 shadow-[0_0_20px_rgba(0,255,135,0.15)]" />
           <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
             Sign In to <span className="text-[var(--color-accent)] font-mono">Hatiyar</span>
           </h1>

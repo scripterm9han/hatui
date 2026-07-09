@@ -31,9 +31,7 @@ export default function Navbar() {
         {/* Brand Logo */}
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="h-9 w-9 rounded-xl btn-accent-soft flex items-center justify-center shadow-[0_0_18px_var(--color-accent-glow)]">
-              <Shield className="h-4.5 w-4.5 text-[var(--color-accent)]" />
-            </div>
+            <img src="/logo.jpg" alt="Hatiyar Logo" className="h-9 w-9 rounded-xl object-cover shadow-[0_0_18px_var(--color-accent-glow)] transition-transform group-hover:scale-105" />
             <span className="text-white font-bold font-mono tracking-[0.2em] text-sm group-hover:text-[var(--color-accent)] transition-colors">
               HATIYAR
             </span>
